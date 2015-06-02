@@ -1,0 +1,152 @@
+
+SERVER SIDE
+
+==============================================================
+Welcome to the server side
+You will be using this code to connect with the db
+Generally all requests will be through post 
+==============================================================
+
+Responses from the server will be in form of json so you must have a
+json decoder on your client
+
+General responses will be contained in the 'res' field of the json string
+and can mean
+
+	-1: 	"Server err"  - Something wrong with the server
+
+	-2: 	"Input mismatch" - Something wrong with your input , 
+		maybe missing a field or writing it in the wrong case
+
+
+==================================================================
+
+Checking for username availability
+----------------------------------
+
+input
+	link: ...phplib/user.php
+	fields required: Type="username_exists", User_name="eg: felix"
+
+return 
+	(contained in 'res' field)
+	1: 	Means the username exists
+	0: 	Means the username does not exist 
+
+
+Adding a new user
+----------------------------------
+
+input
+	link: ...phplib/user.php
+	fields required: Type="add_user", User_name, Email, User_Pass
+
+return 
+	(contained in 'res' field)
+	1: 	success
+	also returns the user no in field 'no'
+
+
+Login in a user
+----------------------------------
+
+input
+	link: ...phplib/user.php
+	fields required: Type="login_user", User_name, Password
+
+return 
+	(contained in 'res' field)
+	> 0: the userno
+	-3 : Wrmg username/password combination
+
+
+
+User setup
+----------------------------------
+
+input
+	link: ...phplib/setup.php
+	fields required: Type="setup", User_no, Last_updated
+
+return 
+	following fields will be returned
+	if no err
+
+	
+	'ok' : contains 1 if successful 0 otherwise
+	'user_info_no'
+	'avatar_no'
+	'user_name'
+	'email'
+	'date_added'
+        'date' : new last update date (We will be using this field to check for new data)
+
+        'user_info' : 'ok'
+                      'fullname'
+                      'phone'
+                      'date_added'
+                      'date_updated'
+                      
+        'avatar' : 'ok'
+                   'is_set' (tells you whether the user has set his avatar 0 or 1)                   
+                   'date_added'
+                   'date_updated'
+
+	for the current user
+
+
+Avatar upload
+----------------------------------
+
+input
+	link: ...phplib/upload_avatar.php
+	fields required: code="2010", avatar_no, $FILES['file1']('contains the uploaded image')
+
+return 
+	'success' : 0 not successfull
+		    1 successfull
+
+
+Update info
+----------------------------------
+
+input
+	link: ...phplib/user.php
+	fields required: Type="update_info", User_info_no, Fullname, Phone, Email
+
+return 
+	'res' : 1 successfull	'res' : -1, -2 unsuccessful
+
+	'date': date when the info was updated(only available when 'res' = 1)
+
+
+Adding a new noticeboard
+----------------------------------
+
+input
+	link: ...phplib/noticeboard.php
+	fields required: Type="add_noticeboard", User_no, Type_no, Title, Desc
+
+return 
+	'res' (1 success)
+        'noticeboard_no'
+        'avatar_no'
+        'date'
+
+
+Adding a new notice
+----------------------------------
+
+input
+	link: ...phplib/notice.php
+	fields required: Type="add_notice", Noticeboard_no, Type_no, Title, Desc, Date_expiry
+        * date expiry format: "yyyy-mm-dd hh:mm:ss" 
+
+return 
+	'res' (1 success)
+        'notice_no'        
+        'date'
+
+	
+		
+	

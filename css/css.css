@@ -1,0 +1,414 @@
+.top_bar{
+	background-color: #0099ff;
+	padding: 10px;
+	margin-bottom: 15px;
+	border-radius: 10px;
+	max-width:100%;
+	position:fixed;
+	z-index: 99;
+	opacity: 10%;
+	margin-left: -40px;
+
+}
+#message_label{
+	margin-left: 15px;
+}
+.input-append{
+	padding-top: 6px;
+}
+#about_us{
+	background-color: white;
+	padding: 10px;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+#appendedInputButtons{
+	width: 180px;
+	border-radius: 10px;
+	border-collapse: separate;
+	border-style: none;
+	border-width: thin;
+	font-size: 14px;
+	padding: 5px;
+}
+
+#search{
+	width: 250px;
+	border-radius: 10px;
+	height: 30px;
+	font-size: 13px;
+}
+#search-btn, #search-options-btn{
+	background-color: #337ABA;
+	width: 80px;
+	height: 30px;
+	background-color: #fff;
+	border-style: inset;
+	border-radius: 10px;
+}
+
+#add_content_index{
+	margin-top: 40px;
+	margin-left: 230px;
+	position: relative;
+}
+#general_settings, #security_settings, #privacy_settings{
+	padding-left: 20px;
+	margin-top: 10px;
+	color:black;
+}
+.contact_landing{
+	margin-left: 250px;
+	margin-top: 1050px;
+}
+#make_notice_board, #upload_avatar{
+	background-color: #ffffff;
+	padding:20px;
+	width: 748px;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+ .dropdown-menu{
+ 	margin-top: -0.2px;
+ }
+
+ .about_us_index{
+ 	padding-top: -150px;
+ }
+ #no_notices{
+ 	margin-left: 180px;
+ 	margin-top: 150px;
+ 	position: relative;
+ 	font-size: 20px;
+ }
+#notice_image{
+	max-width: 300px;
+	
+}
+#noticeboards{
+	margin-left: 10px;
+	margin-top: 5px;
+}
+#upload_avatar{
+	margin-left: 10px;
+}
+
+#contact_us_form{
+	background-color:  #ffffff;
+	width: 700px;
+	border-radius: 10px;
+	margin-top: 10px;
+
+}
+
+.form-control{
+	background-color:  #eeeeee;
+}
+
+#contact_us_form>form{
+	padding:10px;
+}
+
+#contact_message{
+	width: 640px;
+	max-width: 640px;
+	position: relative;
+	border-radius: 10px;
+	background-color: #eeeeee;
+	margin:20px;
+}
+.general_settings_inner{
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 40px;
+	margin-left: 00px;
+	margin-top: 10px;
+	width:700px;
+	
+}
+#submit_avatar{
+	margin-top: 180px;
+}
+#description_label{
+	margin-left: 20px;
+}
+.bg_landing{
+	background-image:url("http://localhost/Notice-Board project/img/notice 3.jpg");
+	width: 100%;
+}
+.notice_upload_inner{
+	background-color: #ffffff;
+	padding:20px;
+	width: 748px;
+	border-radius: 10px;
+}
+#notice_upload_form{
+	border-radius: 40px;
+	height:1000px;
+	margin-top: 10px;
+	position: relative;
+
+}
+
+#indent{
+	margin-top: 130px;
+}
+#date_expiry{
+	margin-left: 0px;
+}
+.carousel{
+	margin-top: 40px;
+	border-color:transparent;
+	width: 100%;
+	min-height: 100%;
+	min-width:100%;
+	position: relative;
+}
+
+.proofs{
+	margin-top: 30px;
+	color:black;
+}
+
+#notices{
+	margin-left:10px;
+	margin-top: 10px;
+
+}
+
+#notices:first-child{
+	margin-left: 140px;
+}
+
+.general_settings_input{
+	width:200px;
+	margin-left: 400px;
+	margin-top: -30px;
+	border-color: #0099ff;
+
+}
+#profile_image{
+	margin-left: 30px;
+}
+
+
+.danger{
+	color:red;	
+}
+.proceed{
+	color: green;
+}
+.controls>input{
+	border-radius: 10px;
+	width: 550px;
+}
+li > .active{
+	background-color: #337ABA;
+}
+body{
+	background-color: #cccccc;
+	font-family: 'Roboto', sans-serif; 
+	font-size:11pt;
+	position: relative;
+	margin-bottom: 10px;
+	font-weight: 300; 
+	font-style: normal;
+}
+#loading-anim{
+	margin-left: 300px;
+	margin-top: 100px;
+}
+.add_content{
+	margin-bottom: 20px;
+	padding-bottom: 50px;
+	max-height: 1000px;
+	position: relative;
+}
+.preview_details{
+	text-indent: 150px;
+	color: #0099ff;
+	margin-top: -25px;
+}
+
+#modal-625299{
+	margin-left: 75px;
+}
+label { 
+	font-weight: 300; 
+	font-style: normal; }
+.side_bar{
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 20px;
+	max-height: 1000px;
+	margin-top: 10px;
+	position: static;
+}
+
+.logo{
+	max-height: 40px;
+	margin-top: 7px;
+}
+
+.menu_buttons{
+	font-size:20px;
+}
+a{
+	color: black;
+}
+.main_content{
+	margin-top: 90px;
+}
+.img-thumbnail{
+	margin:10px;
+}
+#image_for_notice{
+	max-width: 100%;
+	margin:auto;
+	display:block;
+}
+.ui-icon{
+	color:#0099ff;
+}
+.footer{
+	background-color: gray;
+	border-radius: 10px;
+	margin-top: 30px;	
+}
+.bottom_links{
+	font-size: 15px;
+	padding: 10px;
+}
+.drop_down_sort{
+	border-radius: 5px;
+	padding: 5px;
+}
+.drop_down_account{
+	background-color: #fff;
+}
+.menu_button:hover{
+	background-color: #ADD8E6;
+}
+.slider{
+	width:auto;
+	height: auto;
+	margin-top: 40px;
+
+}
+.error{
+	color: red;
+}
+
+#new_phone{
+	font-size:11px;
+}
+#create_noticeboard{
+	color:#0099ff;
+}
+.margin-bottom {	margin-bottom: 15px; }
+.form-group { margin-bottom: 20px; }
+.form-group a {	line-height: 34px; }
+.form-group:last-child { margin-bottom: 0; }
+.form-horizontal .control-label { margin-bottom: 10px; }
+.table { margin-bottom: 0; }
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, 
+.table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+	vertical-align: middle;
+}
+#upload_notice{
+	height: 20px;
+	border-radius: 20px;
+	background-color: #eeeeee;
+}
+#notice_description, #noticeboard_description{
+	margin-top: 10px;
+	width: 680px;
+	max-width: 680px;
+	position: relative;
+	border-radius: 10px;
+	background-color: #eeeeee;
+	margin:20px;
+
+}
+
+.notice_type{
+	margin-left: 160px;
+}
+.upload{
+	margin-top: 10px;
+	max-height: 800px;
+}
+#expiry_label, #noticeboard_name_label{
+	margin:10px;
+}
+
+.success{
+	color: green;
+}
+
+.form_title{
+	margin-top: 120px;
+	text-align: center;
+	font-family: 'Roboto';
+	font-variant: small-caps;
+	font-weight: 300;
+	color: #0099ff;
+}
+#contact_us_title{
+	margin-left: -280px;
+	text-align: center;
+	font-family: 'Roboto';
+	font-variant: small-caps;
+	font-weight: 300;
+	color: #0099ff;
+}
+.sign_up_form{
+	margin-top: -110px;
+	left: -120px;
+}
+.settings{
+	background-color: white;
+	border-radius: 10px;
+	padding: 10px;
+}
+.create_account_top{
+	margin-left: 60px;
+}
+.padded{
+	padding: 10px;
+}
+.inline_login{
+	float: right;
+	margin-top:10px;
+	font-size: 50%;	
+
+}
+#user_login{
+	max-width: 160px;
+}
+.submit1{
+	float: right;
+	margin: 10px;
+}
+.new_user{
+	padding-top: 40px;
+}
+.create_account {
+	background-color: #fff;
+	border: none;
+	max-width: 700px;
+	background-color: rgba(255,255,255,0.8);
+	border: 1px solid #dedede;
+	border-radius: 8px;
+	margin: 0 auto;
+	padding: 30px;
+	
+}
+.form-group:last-child { margin-bottom: 0; }
+.form-horizontal .control-label { margin-bottom: 10px; }
+#checkbox_login{
+	margin-left: -250px;
+}

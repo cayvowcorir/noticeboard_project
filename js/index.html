@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<style type = "text/css">
+			label{ width:10em; float:left;};	
+		</style>
+		<script	type="text/javascript" src="jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="populate_select.js"></script>
+	</head>
+	<body>
+		<h1>Book a taxi</h1>
+		<form method="POST">
+			<div><label>Name</label><input type="text" id="name" placeholder="Your name"/></div>
+			<div><label>Phone no.</label><input type = "tel" id="phone_no" placeholder = "Enter your phone number"/></div>
+			<div><label>Email</label><input type="email" id="email" placeholder = "email"/></div>
+			<div><label>Select route</label> 
+				<select id="route"/>
+			<div><label>Passengers:</label> 
+									<input type = "radio" id = "no_of_pass" value = "1"/>1
+									<input type = "radio" id ="no_of_pass" value = "2"/>2
+									<input type = "radio" id ="no_of_pass" value = "3"/>3
+									<input type = "radio" id ="no_of_pass" value = "4"/>4</div>
+			<div><label>Travel time:</label> <input type="datetime-local" name= "travel_time" placeholder = "yyyy-mm-dd"></div>
+			<div><input id="submit" type = "submit"/></div>
+		</form>	
+	</body>
+</html>

@@ -1,0 +1,60 @@
+**NB: This is a custom readme file for the group members**
+
+
+#Welcome to the Notice-Board project web version
+
+#Dependencies
+* server-side
+
+#Instructions
+* You need to include Magani's server side on the root of the website folder, otherwise, so features may not work.
+* After copying the phplib file to the root, cut and paste the file named 'setup_web.php ' to the phplib folder, then you are good to go.
+
+#Signing up
+If on the index page you click on sign in, a form will be provided for you to fill in your details.
+* If your email is not a valid email, i.e., it is not in the format name@host.domain, an error message will be displayed.
+* If you enter a password in the first field that is less than 6 characters, you will recieve an error message.
+* If you enter the subsequent password (repeat password field) that is not the same as the first password field, you will recieve an error message.
+* As you enter your username, a query is sent to the database to check for username availability. A message will be displayed always as regards to that.
+* Please note that you cannot submit the form unless you fill in all the fields, including checking the checkbox, otherwise you will recieve an error message.
+Once you have signed up, you will be redirected to your homeboard.
+
+#Signing in/logging in
+The login form is situated at the right corner of the index page.
+* If you provide a wrong username/password combination, you will recieve an error message as regards to that.
+* Once you have logged in, you will be redirected to your homeboard
+* On the index page, there is a carousel that is activated when a user clicks on the icon that represents next or previous. The carousel can also be activated by clicking the right or left direction buttons on the keyboard. It is paused by simply hovering over it.
+
+#Homeboard
+* On every signup/login, a cookie is created in your computer, so make sure your browser is set to allow cookies. Also, a session starts.
+* For every new user, you will have a default profile image displayed on your homeboard until you choose to upload a new one. You can do so by clicking on the profile image/picture on your homeboard.
+* If you press the logout button, you will be logged out of your session and redirected to the index page.
+* The name you are logged in as is displayed in the top left corner of the top bar.
+
+**Changing user info**
+* To change your user information, click on the button 'Account settings' to the left of your screen, then on the 'General Settings' option. A form will be loaded, containing all your user info. To edit the info, click on any of the fields (There is a tooltip and a pencil icon that will inform you of that).
+* You can change your Full Names, email address and password. However, you cannot change your username, since it is unique to every user. The email address you enter is validated, so if you enter a wrong password pattern other than [name@host.domain], you will recieve an error message, an the submit button will be disabled.
+* If you do not fill all of the fields provided when updating the user info, the submit button will also be disabled.
+* Once you have changed the fields, you will recieve a success message and the page will automatically reload.
+* Once you click on the profile image on your homeboard, a preview will be displayed where you can proceed to change the image, or close the preview.
+* If you click on the 'change profile pick' button, a form will be displayed where you can drag and drop the profile image you want to change to, or you can alternatively click on the space to choose a file from the pc. 
+* Please note that the image must not be more than 2 mb and must be in jpeg format or else you will recieve an error message. Also, the image may not reload automatically once you update your profile picture. If that happens, then your browser caches images. Try another browser and you will note automatic change on uploading an image.
+* To change the password, just click on the link and a modal will be displayed. On entering the old password, a request is fired to the server and the password verified. If it is wrong, you will recieve an error message. The new password length will be checked to confirm it is more than six characters, then it will be compared with the subsequent one.
+
+
+**Posting a notice**
+* To post a notice, you click on the menu item 'Post Notice'. A modal will be displayed where you can either enter the Notice Board name, or create a new Notice Board.
+* We are working on the functionality to load Notice Board names from the server automatically to provide an autocomplete feature.
+* However, if you click on 'Create One', a form will be displayed where you can enter the NoticeBoard details. If any of the fields are empty, you will recieve an error message. You are supposed to enter the NoticeBoard title, description, and type.
+* Once you have created the Notice Board, go ahead and click on the 'Post Notice' button and enter the name of the Notice Board and proceed on.
+* Please note that if you leave the Notice Board name input field empty, you will recieve an error message. After entering the name of the notice board, another modal will be displayed that allows you to choose whether you want to enter a text, audio or image notice. Currently, only the text and the image notice upload forms are working.
+* If you click on the text notice link, a form will be displayed where you can enter the info.
+* All the fields must be filled in as usual. However, a default value of '1' is provided for the notice board number as we work on loading notice board names.
+* On the date part of this form, on clicking the input field, a calender will be displayed from which you can choose the expiry date of the notice.
+* The description field can be resized according to the user's preference of space. you can do that by dragging the right corner of that input field (The default text states that too).
+* On submitting, you will recieve an alert that the notice has been added, and on dismissing it, the page will reload.
+* For image notices, on clicking that option, a form will be displayed that allows you to drag and drop photos from your pc. Alternatively, you can just click on that space and choose a file.
+
+
+#Please Note[previewers]
+* Also, this website uses the web version of setup.php, which I have put in the phplib folder (setup_web.php). The setup.php in Magani's server-side is not usable in this case. Please note however that you still need the rest of the phplib files.

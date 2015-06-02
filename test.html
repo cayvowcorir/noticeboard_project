@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+		<head>
+		<meta charset="utf-8">
+		<title>Notice-Board</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author: Kevin" content="">
+		<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+		<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+		<!--script src="js/less-1.3.3.min.js"></script-->
+
+
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/css.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="css/dropzone.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<![endif]-->
+		<!-- Fav and touch icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+		<link rel="shortcut icon" href="img/favicon.png">
+		
+		<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>		
+		<script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="js/dropzone.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/readmore.js"></script>
+
+
+		
+	</head>
+<body>
+<div class="col-md-8 column" id="upload_avata">
+	<form action="phplib/upload_avatar.php" method="post" class="dropzone"  enctype="multipart/form-data">
+		<input type="hidden" name="avatar_no" id="avatar_no" value="$avatar_no">
+		<input type="hidden" name="code" value='2010'>
+		<button type='submit' class='btn btn-block btn-info' id='submit_avatar'>Submit Profile pic</button>
+	</form>
+</div>
+</body>
+</html>
+
+
+function load_image_notices(){
+		$.ajax({
+			type: "POST",
+			url: user_setup,
+			data: {"Type": "setup", "User_no": user_no },
+			beforeSend: function(){$('.add_content').html("<img id='loading-anim' src='images/loader.gif'>");},
+			success: function(data){
+				var response=jQuery.parseJSON(data);				
+				var no_of_noticeboards= response.noticeboards.count;
+				var count1=0;			
+				while(count1<no_of_noticeboards){	//filter the noticeboards into different types(public, request, private)
+					var noticeboard_type=response.noticeboards[count1].type;
+					var notice_count=response.noticeboards[count1].notices.count;
+					var count2=0;
+					while(count2<notice_count){     //filter the notices into different types(public, request, private)
+						//variables to hold the notices from the selection statement below
+						var htmldata= {
+							notices: []
+						};
+						var notice_type=response.noticeboards[count1].notices[count2].type;
+						if(notice_type=='1'){ //all public notices												
+							var notice_title=response.noticeboards[count1].notices[count2].title;
+							var notice_desc=response.noticeboards[count1].notices[count2].desc;
+							var notice_date_added=response.noticeboards[count1].notices[count2].date_added;
+							var notice_date_expiry=response.noticeboards[count1].notices[count2].date_expiry;														
+							var html="<div class='thumbnail col-md-4'><button class='close pull-right'>&times;</button>";
+							html+="<div><a class='pull-left' href='#'><img class='media-object' src='"+images/notice_text.png+"' width='64' height='64'></a></div>";
+							html+="<div class='media-body'><h4 class='media-heading'>"+notice_title+"</h4>";
+							html+="<div id='desc'><div id='preview'>"+notice_desc+"</div></div>";
+							html+="<div id='date_added' class='pull-left'> Date Added: "+notice_date_added+"</div>";
+							html+="<div id='date_added' class='pull-right'> Expiry Date: "+notice_date_expiry+"</div>";
+							html+="</div></div>";
+
+							<div class="col-md-4">
+									<div class="thumbnail">
+										<img alt="300x200" src="images/image1.jpg">
+										<div class="caption">
+											<h3>
+											Thumbnail label
+											</h3>
+											<p>
+											Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+											</p>
+											<p>
+											<a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+											</p>
+										</div>
+									</div>
+								</div>
+
+							//divide into even and odd groups for easy arrangements	
+							
+								htmldata.notices.push(html);
+							
+						}
+
+						count2++;
+						$('.add_content').empty();
+						$.each(htmldata, function(key, data){
+							$('#notices').prepend(data);
+
+						});
+
+						
+					}
+					
+					count1++	 				 
+				};
+				
+			}
+		})
+	}
+
+
+
+<!DOCTYPE html>
+	<html>
+		<head>
+		<meta charset="utf-8">
+		<title>Notice-Board</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author: Kevin" content="">
+		<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+		<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+		<!--script src="js/less-1.3.3.min.js"></script-->
+
+
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/css.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="css/dropzone.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<![endif]-->
+		<!-- Fav and touch icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+		<link rel="shortcut icon" href="img/favicon.png">
+		
+		<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/trunk8.js"></script>		
+		<script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="js/dropzone.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/readmore.js"></script>
+
+
+
+		
+	</head>
+	<body onload="load_avatar($avatar_isset);">		
+
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="row clearfix">
+						<div class="col-md-11 column top_bar">
+							<ul class="nav nav-pills menu_buttons">
+								<a href="#"><img src="images/notice_background.jpg" class="logo pull-left"></a>
+								<li class="active">
+									<a href="#" class="menu_button"></i>Home</a>
+								</li>
+								<li>
+									<a href="#" class="menu_button">Profile</a>
+								</li>
+								<li>
+									<a href="#modal-container-625296" role="button" id="post_notice modal-625296" class="menu_button" data-toggle="modal">Post Notice</a>
+								</li>
+								<li class="">
+									<a href="#" class="menu_button" id='menu_notice_boards'>Notice Boards</a>
+								</li>
+								<li class="">
+									<a href="#" class="menu_button" id="contact_us">Contact Us</a>
+								</li>
+								<li class="">
+									<a href="#" id='about_us_menu' class="menu_button">About us</a>
+								</li>
+
+								<div class="pull-right"><h5 class="welcome_message">Logged in as $username <div class="name"></div></h5>
+								<button type="button" class="btn btn-warning pull-right" id="logout">Logout</button></div>
+							</ul>
+							
+						</div>
+					</div>
+
+					<div class="row clearfix main_content">
+						<div class="col-md-4 column side_bar">
+							<ul class="nav nav-pills">
+								<li class="active">
+									<a href="#"> <span class="badge pull-right">42</span> Notices</a>
+								</li>
+								<li>
+									<a href="#"> <span class="badge pull-right">16</span> Following</a>
+								</li>
+								<li>
+									<a href="#"> <span class="badge pull-right">30</span> Blog</a>
+								</li>
+							</ul>
+							<a href="#modal-container-625298" id="modal-625298" data-toggle="modal"></a>
+
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a class="panel-title collapsed" id="notifications" data-toggle="collapse" data-parent="#panel-55795" href="#">Notifications</a>
+										<p><div id="inner_notifications"></div></p>									
+									</div>									
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a class="panel-title collapsed" id="messages" data-toggle="collapse" data-parent="#panel-55795" href="#">Messages</a>
+										<p><div id="inner_messages"></div></p>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a class="panel-title" data-toggle="collapse" id="settings" data-parent="#panel-55795" href="#">Account Settings</a>
+										<div id="inner_settings"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-md-8 column main">
+							<div class="drop_down_sort">
+								<select class="drop_down_sort">								
+										<option>
+											<a href="" class="text_notices">Text notices</a>
+										</option>
+										<option class="">
+											<a href="" class="audio_notices">Audio notices</a>
+										</option>
+										<option>
+											<a href="#" class="image_notices">Image notices</a>
+										</option>
+										
+								</select>
+							</div>
+
+							<div id="notices" class='row'>
+							</div>
+								
+							<ul class="pagination hidden">
+								
+							</ul>
+						</div>
+
+						<div class="add_content col-md-8 column"></div>
+
+						<!--------uploading profile pic---------!-->
+						<div class="col-md-8 column hidden" id="upload_avatar">
+							<form action="phplib/upload_avatar.php" method="post" class="dropzone hidden" id="avatar_upload" enctype="multipart/form-data">
+								<input type="hidden" name="avatar_no" id="avatar_no" value="$avatar_no">
+								<input type="hidden" name="code" value='2010'>
+								<button type='submit' class='btn btn-block btn-info' id='submit_avatar'>Submit Profile pic</button>
+							</form>
+						</div>				
+						
+
+					</div>
+					<div class="row clearfix footer">
+						<div class="col-md-12 column">
+						<address> <strong>The Notice-Board Project, Inc.</strong><br> P.O. Box 1 Juja,<br> Nairobi, Kenya<br> <abbr title="Phone">Phone:</abbr> +254 712-345678</address>
+					</div>
+					<div class="text-center bottom_links">
+						<a href="" id="policy">Privacy Policy</a>||<a href="terms.html">Terms Of Service</a>||<a href="contact_us.html">Contact Us</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--------Modal 1---------!-->				
+	<div class="modal fade" id="modal-container-625296" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						Choose a notice-board
+					</h4>
+				</div>
+				<div class="error" id="notice_board_message"></div>
+				<div class="modal-body">
+					<form><input type="text" id="load_notice_boards" class="form-control" placeholder="Enter the name of the Noticeboard"></form>
+				</div>
+				<div class="modal-footer">
+					Or Alternatively, you can <a href="#" id="create_noticeboard">Create a Notice-Board</a>
+					 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+					 <button type="button" id="modal-625297" data-target="#modal-container-625297" data-toggle="modal" class="btn btn-primary"> Ok</button>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+					
+
+
+	<!--------Modal 2---------!-->
+	<div class="modal fade" id="modal-container-625297" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title text-center" id="myModalLabel">
+					Please select the type of notice you want to upload
+					</h4>
+				</div>
+				<div class="modal-body">
+					<blockquote class="text-center"><a href="#" data-dismiss="modal" id="text_notice">Text Notice</a><br>
+					<a href="#" data-dismiss="modal" id="audio_notice">Audio Notice</a><br>
+					<a href="#" data-dismiss="modal" id="image_notice">Image Notice</a><br></blockquote>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<!--------Modal 3[Profile _image]---------!-->
+	<div class="modal fade" id="modal-container-625298" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						Profile Pic
+					</h4>
+				</div>
+				<div class="modal-body" id="image_preview">
+					
+				</div>
+				<div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+					 <button type="button" id="change_avatar" data-dismiss="modal" class="btn btn-primary">Change Profile Pic</button>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<!--------Modal 4[change_password]---------!-->
+	<div class="modal fade" id="modal-container-625299" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						Change Password
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div class="control-group text-center" id="div_original_pass">
+					  <label class="control-label" for="original_password">Enter the old password</label>
+					  <div class="controls">
+					    <span class="help-inline hidden" id="wrong_password">Wrong password</span>
+					    <span class="help-inline hidden" id="password_valid">Password Ok</span>
+					    <input type="password" id="original_password">
+					    
+					  </div>
+					</div>
+
+					<div class="control-group text-center" id="div_new_pass">
+					  <label class="control-label" for="new_password">Enter the new password</label>
+					  <div class="controls"><span class="help-inline hidden" id="password_ok">Password Ok</span>
+					    <span class="help-inline hidden" id="password_not_ok">The password is less than 6 characters</span>
+					    <input type="password" id="new_password">					    
+					  </div>
+					</div>
+
+					<div class="control-group text-center" id="div_new_pass2">
+					  <label class="control-label" for="new_password2">Repeat the new password</label>
+					  <div class="controls">
+					  	<span class="help-inline hidden" id="password_mismatch">The Passords don't match</span>
+					  	<span class="help-inline hidden" id="password_match">The Passords match</span>
+					    <input type="password" id="new_password2">			
+					  </div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> 
+					 <button type="button" id="confirm_pass_change" data-dismiss="modal" class="btn btn-primary">Change Password</button>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+
+	<!--------Modal 5[upload audio notice]---------!-->
+	<div class="modal fade" id="modal-container-625300" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						Upload Audio Notice
+					</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div>
+						<label for='upload_audio'>Please choose the audio file to upload:</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+					 <button type="button" id="change_avatar" data-dismiss="modal" class="btn btn-primary">Change Profile Pic</button>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+
+	<!-----------Popovers--------------!-->
+	<div class="popover" id="popover_alerts"></div>
+
+
+	<!-----------About Us----------------!-->
+	<div id='about_us' class='hidden'>
+	<h2>Four dudes, two ladies...Making Stuff</p>
+	<h3>Who we are</h3>
+	<p>We are a group of programmers who have scaled the limits and have a yearning for success in coding. Our main 
+	aim is to make sure we provide unique code to the world, code that is clean, efficient, easy to understand, and as modular 
+	as possible</p>
+	<h3>Inception</h3>
+	<p>The group was concieved and ideas born, and the end result was a tight group of programmers, who employ the concept of 
+	modularization as much as possible.</p>
+	<h3>This website</h3>
+	<p>Coined within a matter of days and implemented on a very, very busy schedule, the design and implementation of this website has 
+	exceeded any expectation as far as time utilization is concerned. In less than a week, alot of stuff has been done, and the result is
+	this spectacular website.</p>
+	</div>
+
+	<div class="hidden" id="user_no">$user_no</div>	
+	<div class="hidden" id="username">$username</div>
+	<div class="hidden" id="user_info_no">$user_info_no</div>
+
+</body>
+</html>

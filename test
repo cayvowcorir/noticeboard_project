@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="col-md-8 column" id="upload_avatar">
+							<form action="phplib/upload_avatar.php" method="post" class="dropzone" id="avatar_upload" enctype="multipart/form-data">
+								<input type="hidden" name="avatar_no" id="avatar_no" value="$avatar_no">
+								<input type="hidden" name="code" value='2010'>
+								<button type='submit' class='btn btn-block btn-info' id='submit_avatar'>Submit Profile pic</button>
+							</form>
+						</div>
+</body>
+</html>
